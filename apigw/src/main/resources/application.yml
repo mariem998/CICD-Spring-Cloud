@@ -1,0 +1,52 @@
+
+debug: true
+
+server:
+  port: 9977
+spring:
+  application:
+    name: api-gateway
+
+
+
+  cloud:
+
+    gateway:
+      routes:
+        - id: user
+          uri: lb://USERS
+          predicates:
+            - Path=/user/**
+          filters:
+            - AuthenticationFilter
+        - id : salaire
+          uri: lb://SALAIRE
+          predicates:
+            - Path=/salaire/**
+          filters:
+                - AuthenticationFilter
+        - id: conge
+          uri: lb://CONGE
+          predicates:
+            - Path=/conge/leave-requests/**
+          filters:
+            - AuthenticationFilter
+        - id: formation
+          uri: lb://FORMATION
+          predicates:
+            - Path=/api/v1/formations/**
+          filters:
+            - AuthenticationFilter
+
+
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eurekaserver:7777/eureka
+
+
+
+
+
+

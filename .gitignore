@@ -1,0 +1,7 @@
+# Project exclude paths
+/apigw/target/
+/conge/target/
+/eurekaserver/target/
+/formation/target/
+/salaires/target/
+/users/target/
